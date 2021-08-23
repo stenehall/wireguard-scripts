@@ -8,7 +8,6 @@ sudo apt-get -y install wireguard
 sudo apt-get install -y qrencode
 
 #Create Server Keys
-sudo su
 cd /etc/wireguard
 wg genkey | tee server_private_key | wg pubkey > server_public_key
 
