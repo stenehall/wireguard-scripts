@@ -14,6 +14,11 @@ else
 	ip="10.8.0."$(expr $(cat last-ip.txt | tr "." " " | awk '{print $4}') + 1)
 	FQDN=$(hostname -f)
 	HOSTIP=$(ip -4 addr show enp1s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+	if [[ ${HOSTIP} == "" ]]
+	then
+	    echo "IP not found automatically. Update wg0.conf before adding clients"
+		HOSTIP="<Insert IP HERE>"
+	fi
     SERVER_PUB_KEY=$(cat /etc/wireguard/server_public_key)
     cat /etc/wireguard/wg0-client.example.conf | sed -e 's/:CLIENT_IP:/'"$ip"'/' | sed -e 's|:CLIENT_KEY:|'"$key"'|' | sed -e 's|:SERVER_PUB_KEY:|'"$SERVER_PUB_KEY"'|' | sed -e 's|:SERVER_ADDRESS:|'"$HOSTIP"'|' > clients/$1/wg0.conf
 	echo $ip > last-ip.txt

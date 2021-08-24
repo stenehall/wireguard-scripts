@@ -18,10 +18,11 @@ https://www.wireguard.com/install/
 https://www.wireguard.com/quickstart/
 
 ## Simple installation
-1. run the following command from the command line:
+1. run the following commands from the command line:
   
-  wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/install-server.sh
-  bash install-server.sh
+	wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/install-server.sh
+	
+	bash install-server.sh
 
 
 ## Installation
