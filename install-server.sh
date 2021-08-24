@@ -5,7 +5,7 @@ if [ $# -eq 0 ]
 then
 	server_ip="10.100.200.1"
 else
-
+	server_ip=$1
 fi
 
 
