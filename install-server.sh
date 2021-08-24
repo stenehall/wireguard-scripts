@@ -16,7 +16,7 @@ sudo wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/wg0-se
 
 # Add server key to config
 SERVER_PUB_KEY=$(cat /etc/wireguard/server_public_key)
-cat wg0-server.example.conf | sed -e 's|:SERVER_KEY:|'"$key"'|' > clients/$1/wg0.conf
+cat wg0-server.example.conf | sed -e 's|:SERVER_KEY:|'"$SERVER_PUB_KEY"'|' > etc/wireguard/wg0.conf
 
 # Get run scripts/master/wg0-server
 cd ~
