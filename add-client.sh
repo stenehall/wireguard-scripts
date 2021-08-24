@@ -18,7 +18,7 @@ else
 	fi
     SERVER_PUB_KEY=$(cat /etc/wireguard/server_public_key)
     cat /etc/wireguard/wg0-client.example.conf | sed -e 's/:CLIENT_IP:/'"$ip"'/' | sed -e 's|:CLIENT_KEY:|'"$key"'|' | sed -e 's|:SERVER_PUB_KEY:|'"$SERVER_PUB_KEY"'|' | sed -e 's|:SERVER_ADDRESS:|'"$HOSTIP"'|' > clients/$1/wg0.conf
-	echo $ip > last-ip.txt
+	echo $ip > /etc/wireguard/last-ip.txt
 	cp install-client.sh clients/$1/install-client.sh
 	zip -r clients/$1.zip clients/$1
 	tar czvf clients/$1.tar.gz clients/$1
