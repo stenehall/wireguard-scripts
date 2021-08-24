@@ -4,6 +4,7 @@
 # Ubuntu
 sudo apt-get update
 sudo apt-get -y install wireguard
+sudo apt-get -y install wireguard-tools
 
 sudo apt-get install -y qrencode
 
@@ -13,10 +14,11 @@ sudo wg genkey | tee server_private_key | wg pubkey > server_public_key
 
 # Get config
 sudo wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/wg0-server.example.conf 
+sudo wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/wg0-client.example.conf
 
 # Add server key to config
 SERVER_PUB_KEY=$(cat /etc/wireguard/server_public_key)
-cat wg0-server.example.conf | sed -e 's|:SERVER_KEY:|'"$SERVER_PUB_KEY"'|' > etc/wireguard/wg0.conf
+cat /etc/wireguard/wg0-server.example.conf | sed -e 's|:SERVER_KEY:|'"${SERVER_PUB_KEY}"'|' > /etc/wireguard/wg0.conf
 
 # Get run scripts/master/wg0-server
 cd ~
