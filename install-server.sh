@@ -5,6 +5,10 @@ sudo apt-get update
 sudo apt-get -y install wireguard
 sudo apt-get -y install wireguard-tools
 
+# Install zip
+sudo apt-get -y install zip
+
+# Install QR Encoder
 sudo apt-get install -y qrencode
 
 # Create Server Keys

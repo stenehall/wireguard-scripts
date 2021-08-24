@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install zip
-sudo apt-get -y install zip
-
 if [ $# -eq 0 ]
 then
 	echo "must pass a client name as an arg: add-client.sh <new-client>"
