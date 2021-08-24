@@ -31,3 +31,9 @@ chmod +x remove-peer.sh
 
 # Start up server
 sudo wg-quick up wg0
+
+sudo sysctl -p
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# Use this to forward from the server
+#sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
