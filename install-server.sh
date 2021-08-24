@@ -1,5 +1,4 @@
 # Install wireguard on Ubuntu Server
-# (C) 2021 Richard Dawson 
 
 # Ubuntu
 sudo apt-get update
@@ -35,5 +34,5 @@ sudo wg-quick up wg0
 sudo sysctl -p
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
-# Use this to forward from the server
+# Use this to forward traffic from the server
 #sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
