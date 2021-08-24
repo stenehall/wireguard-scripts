@@ -27,7 +27,5 @@ chmod +x install-client.sh
 wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/remove-peer.sh
 chmod +x remove-peer.sh
 
-
-
 # Start up server
 sudo wg-quick up wg0
