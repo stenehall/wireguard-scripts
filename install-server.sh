@@ -1,5 +1,14 @@
 # Install wireguard on Ubuntu Server
 
+# Set IP range (experimental)
+if [ $# -eq 0 ]
+then
+	server_ip="10.100.200.1"
+else
+
+fi
+
+
 # Ubuntu
 sudo apt-get update
 sudo apt-get -y install wireguard
@@ -22,6 +31,9 @@ sudo wget https://raw.githubusercontent.com/rdbh/wireguard-scripts/master/wg0-cl
 # Add server key to config
 SERVER_PUB_KEY=$(cat /etc/wireguard/server_public_key)
 cat /etc/wireguard/wg0-server.example.conf | sed -e 's|:SERVER_KEY:|'"${SERVER_PUB_KEY}"'|' > /etc/wireguard/wg0.conf
+
+# Add server IP to last-ip.txt file
+echo ${server_ip} > last-ip.txt
 
 # Get run scripts/master/wg0-server
 cd ~

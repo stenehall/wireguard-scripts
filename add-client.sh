@@ -8,7 +8,7 @@ else
 	mkdir -p clients/$1
 	wg genkey | tee clients/$1/$1.priv | wg pubkey > clients/$1/$1.pub
 	key=$(cat clients/$1/$1.priv) 
-	ip="10.8.0."$(expr $(cat last-ip.txt | tr "." " " | awk '{print $4}') + 1)
+	ip="10.100.200."$(expr $(cat last-ip.txt | tr "." " " | awk '{print $4}') + 1)
 	FQDN=$(hostname -f)
 	HOSTIP=$(ip -4 addr show enp1s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 	if [[ ${HOSTIP} == "" ]]
