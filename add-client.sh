@@ -8,7 +8,7 @@ else
 	mkdir -p clients/$1
 	wg genkey | tee clients/$1/$1.priv | wg pubkey > clients/$1/$1.pub
 	key=$(cat clients/$1/$1.priv) 
-	ip="10.100.200."$(expr $(cat last-ip.txt | tr "." " " | awk '{print $4}') + 1)
+	ip="10.8.0."$(expr $(cat last-ip.txt | tr "." " " | awk '{print $4}') + 1)
 	public_ip=$(curl ifconfig.io/ip -4)
     	SERVER_PUB_KEY=$(cat /etc/wireguard/server_public_key)
     	cat /etc/wireguard/wg0-client.example.conf | sed -e 's/:CLIENT_IP:/'"$ip"'/' | sed -e 's|:CLIENT_KEY:|'"$key"'|' | sed -e 's|:SERVER_PUB_KEY:|'"$SERVER_PUB_KEY"'|' | sed -e 's|:SERVER_ADDRESS:|'"$public_ip"'|' > clients/$1/wg0.conf
